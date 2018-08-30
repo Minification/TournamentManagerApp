@@ -8,11 +8,11 @@ import java.util.Set;
 
 public class BindingUtils {
 
-    @BindingAdapter("data")
-    <T> void setRecyclerViewProperties(RecyclerView recyclerView, List<T> items) {
+    /*@BindingAdapter("data")
+    <T> void setRecyclerViewProperties(RecyclerView recyclerView, List<T> data) {
         if(recyclerView.getAdapter() instanceof BindableAdapter) {
             BindableAdapter bindableAdapter = (BindableAdapter) recyclerView.getAdapter();
-            bindableAdapter.setData(items);
+            bindableAdapter.setData(data);
         }
     }
 
@@ -22,6 +22,6 @@ public class BindingUtils {
             BindableAdapter bindableAdapter = (BindableAdapter) recyclerView.getAdapter();
             bindableAdapter.changedPositions(positions);
         }
-    }
+    }*/
 
 }

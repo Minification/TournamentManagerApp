@@ -31,7 +31,7 @@ public class DataAdapter<M, EVH extends DataAdapter.ItemViewHolder, MVH extends 
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public DataAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(layoutInflater, i == VIEW_TYPE_EMPTY ? emptyResourceId : dataResourceId, viewGroup, false);
         try {
@@ -51,7 +51,7 @@ public class DataAdapter<M, EVH extends DataAdapter.ItemViewHolder, MVH extends 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int i) {
+    public void onBindViewHolder(@NonNull DataAdapter.ItemViewHolder itemViewHolder, int i) {
         int viewType = getItemViewType(i);
         if (viewType == VIEW_TYPE_EMPTY) {
 

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.thorbenkuck.tm.tournamentmanagement.BR;
 import com.github.thorbenkuck.tm.tournamentmanagement.R;
 import com.github.thorbenkuck.tm.tournamentmanagement.databinding.FragmentMainBinding;
 
@@ -49,6 +50,8 @@ public class MainFragment extends Fragment implements MainContract.View {
 
         unbinder = ButterKnife.bind(this, root);
 
+        presenter = new MainPresenter(this);
+
         return root;
     }
 
@@ -72,6 +75,6 @@ public class MainFragment extends Fragment implements MainContract.View {
     }
 
     private void showError(int resource) {
-        Snackbar.make(getView(), getString(resource), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(tournamentName, getString(resource), Snackbar.LENGTH_LONG).show();
     }
 }

@@ -91,7 +91,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     }
 
     private void showErrorMessage(int resource) {
-        Snackbar.make(getView(), getString(resource), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(usernameWrapper, getString(resource), Snackbar.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.login_button)
