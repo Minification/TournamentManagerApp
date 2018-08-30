@@ -4,20 +4,15 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class DataAdapter<M, EVH extends DataAdapter.ItemViewHolder, MVH extends DataAdapter.ItemViewHolder> extends RecyclerView.Adapter<DataAdapter.ItemViewHolder> {
+public class DataAdapter<M> extends RecyclerView.Adapter<DataAdapter.ItemViewHolder> {
 
     private List<M> list;
-
-    private Class<EVH> emptyViewHolder;
-
-    private Class<MVH> dataViewHolder;
 
     private int emptyResourceId;
 
@@ -29,33 +24,26 @@ public class DataAdapter<M, EVH extends DataAdapter.ItemViewHolder, MVH extends 
 
     private static final int VIEW_TYPE_DATA = 1;
 
+    public DataAdapter(List<M> list, int emptyResourceId, int dataResourceId, int variableId) {
+        this.list = list;
+        this.emptyResourceId = emptyResourceId;
+        this.dataResourceId = dataResourceId;
+        this.variableId = variableId;
+    }
+
     @NonNull
     @Override
     public DataAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(layoutInflater, i == VIEW_TYPE_EMPTY ? emptyResourceId : dataResourceId, viewGroup, false);
-        try {
-            return i == VIEW_TYPE_EMPTY ?
-                    emptyViewHolder.getConstructor(ViewDataBinding.class).newInstance(viewDataBinding) :
-                    dataViewHolder.getConstructor(View.class).newInstance(viewDataBinding);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return null;
+        Log.wtf("DeineMudder", viewDataBinding+"");
+        return new DataAdapter.ItemViewHolder(viewDataBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ItemViewHolder itemViewHolder, int i) {
         int viewType = getItemViewType(i);
-        if (viewType == VIEW_TYPE_EMPTY) {
-
-        } else {
+        if (viewType == VIEW_TYPE_DATA) {
             itemViewHolder.bind(list.get(i));
         }
     }

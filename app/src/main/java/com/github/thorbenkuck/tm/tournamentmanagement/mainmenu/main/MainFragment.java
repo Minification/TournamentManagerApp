@@ -8,15 +8,22 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.thorbenkuck.tm.shared.TournamentInformation;
 import com.github.thorbenkuck.tm.tournamentmanagement.BR;
 import com.github.thorbenkuck.tm.tournamentmanagement.R;
 import com.github.thorbenkuck.tm.tournamentmanagement.databinding.FragmentMainBinding;
+import com.github.thorbenkuck.tm.tournamentmanagement.util.fuckingadapter.DataAdapter;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +41,10 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     private Unbinder unbinder;
 
+    private List<TournamentInformation> list = Arrays.asList(new TournamentInformation(5, 4, "tourn1", "fickwurst"),
+            new TournamentInformation(5, 4, "tourn1", "fickwurst"),
+            new TournamentInformation(5, 4, "tourn1", "fickwurst"),new TournamentInformation(5, 4, "tourn1", "fickwurst"));
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -49,6 +60,10 @@ public class MainFragment extends Fragment implements MainContract.View {
         fragmentMainBinding.setFragment(this);
 
         unbinder = ButterKnife.bind(this, root);
+
+        DataAdapter<TournamentInformation> dataAdapter = new DataAdapter<>(list, R.layout.empty_row_layout, R.layout.tournament_list_row, BR.item);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(dataAdapter);
 
         presenter = new MainPresenter(this);
 
