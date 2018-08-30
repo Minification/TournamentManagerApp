@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="fragment" type="com.github.thorbenkuck.tm.tournamentmanagement.mainmenu.main.MainFragment"/>
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.github.thorbenkuck.tm.tournamentmanagement.views.fragments.MainFragment"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tournaments_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/enterTournament"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{fragment::onJoinTournament}"
+            android:text="@string/enter_selected_tournament" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tournament_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tournamentname" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{fragment::onCreateTournament}"
+            android:text="@string/create_new_tournament" />
+
+    </LinearLayout>
+</layout>

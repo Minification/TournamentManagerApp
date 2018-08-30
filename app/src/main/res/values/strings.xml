@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TournamentManagementAndroid</string>
+    <string name="account_login">Account Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="user_name">Username</string>
+    <string name="password">Password</string>
+    <string name="server_name">Server</string>
+    <string name="title_activity_tournament">TournamentActivity</string>
+    <string name="title_tournament_list">Tournaments</string>
+    <string name="title_tournament_detail">Tournament Detail</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="tournaments">Tournaments</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_selected_tournament">Enter selected Tournament</string>
+    <string name="tournamentname">Tournamentname</string>
+    <string name="create_new_tournament">Create new tournament</string>
+    <string name="username_password_empty">Username and password must not be empty!</string>
+    <string name="server_unreachable">Server unreachable!</string>
+    <string name="login_and_register_failure">Could not register you after login failure!</string>
+    <string name="login_failure">Could not log you in!</string>
+    <string name="tournament_creation_failure">Tournament could not be created</string>
+</resources>
